@@ -1,5 +1,11 @@
 streamlit
-langchain-groq
+langchain-google-genai
 langchain-core
+langchain
+langchain-community
+langchain-text-splitters
 duckduckgo-search
 PyPDF2
+pypdf
+sentence-transformers
+faiss-cpu

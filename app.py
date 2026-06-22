@@ -1,5 +1,5 @@
 import streamlit as st
-from langchain_groq import ChatGroq
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, SystemMessage
 from duckduckgo_search import DDGS
 import json
@@ -220,9 +220,9 @@ st.markdown("""
 
 # ====================== API KEY ======================
 try:
-    api_key = st.secrets["GROQ_API_KEY"]
+    api_key = st.secrets["GEMINI_API_KEY"]
 except Exception:
-    api_key = "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"
+    api_key = "AIzaSy..." # Fallback won't work in prod, user must provide via secrets
 
 # ====================== SIDEBAR ======================
 with st.sidebar:
@@ -251,7 +251,7 @@ with st.sidebar:
     st.markdown("### 🤖 Model")
     model_choice = st.selectbox(
         "Select model:",
-        ["llama-3.3-70b-versatile", "llama-3.1-8b-instant", "mixtral-8x7b-32768", "gemma2-9b-it"],
+        ["gemini-1.5-flash", "gemini-1.5-pro", "gemini-1.0-pro"],
         label_visibility="collapsed"
     )
 
@@ -325,7 +325,7 @@ with st.sidebar:
     st.markdown("""
     <div class="footer">
         Built with ❤️ by Muhammad Hammad<br>
-        Powered by Groq & LangChain
+        Powered by Google Gemini & LangChain
     </div>
     """, unsafe_allow_html=True)
 
@@ -345,10 +345,10 @@ st.markdown(f"""
 
 # ====================== LLM INIT ======================
 config = mode_configs[mode]
-llm = ChatGroq(
+llm = ChatGoogleGenerativeAI(
     model=model_choice,
     temperature=config["temp"],
-    api_key=api_key
+    google_api_key=api_key
 )
 
 # ====================== WEB SEARCH FUNCTION ======================
