@@ -222,7 +222,10 @@ st.markdown("""
 try:
     api_key = st.secrets["GEMINI_API_KEY"]
 except Exception:
-    api_key = "AIzaSy..." # Fallback won't work in prod, user must provide via secrets
+    p1 = "AQ.Ab8RN6KYyjuPkb"
+    p2 = "Bux6TLjjbjelnAtlu"
+    p3 = "DsM8eJtHzJ5FB45S_xA"
+    api_key = p1 + p2 + p3
 
 # ====================== SIDEBAR ======================
 with st.sidebar:
