@@ -428,8 +428,12 @@ if prompt := st.chat_input("✨ Ask me anything..."):
 
         # Generate response
         with st.spinner("⚡ Generating response..."):
-            response = llm.invoke(history_messages)
-            answer = response.content
-            st.markdown(answer)
+            try:
+                response = llm.invoke(history_messages)
+                answer = response.content
+                st.markdown(answer)
+            except Exception as e:
+                answer = "Error: " + str(e)
+                st.error("Google Gemini API Error: " + str(e))
 
     st.session_state.messages.append({"role": "assistant", "content": answer})
