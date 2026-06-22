@@ -193,7 +193,10 @@ st.markdown("""
         background: rgba(123, 47, 247, 0.05) !important;
         border: 1px dashed rgba(123, 47, 247, 0.3) !important;
         border-radius: 12px !important;
-        padding: 1rem !important;
+    }
+    
+    [data-testid="stFileUploader"] section {
+        padding: 0 !important;
     }
 
     /* ---------- Footer ---------- */
